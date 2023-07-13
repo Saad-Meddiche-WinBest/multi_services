@@ -7,7 +7,7 @@ use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TagsTableSeeder extends Seeder
+class CitiesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,6 +21,7 @@ class TagsTableSeeder extends Seeder
         foreach (range(1, 30) as $index) {
             DB::table('cities')->insert([
                 'name' => $faker->city,
+                'image' => $faker->imageUrl(),      
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
