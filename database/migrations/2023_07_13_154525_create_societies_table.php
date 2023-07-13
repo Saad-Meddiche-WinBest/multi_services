@@ -29,7 +29,7 @@ return new class extends Migration
             $table->timestamps();
 
             //Foreigns
-            $table->foreign('id_demi_categorie')->references('id')->on('demi_categories')->onDelete('set null');
+            $table->foreign('demi_categorie_id')->references('id')->on('demi_categories')->onDelete('set null');
         });
     }
 
