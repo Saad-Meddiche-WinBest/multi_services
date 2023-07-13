@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('societie_has_tags', function (Blueprint $table) {
+            //Columns
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->string('rank')->nullable()->default(0);
-            $table->rememberToken();
+            $table->unsignedBigInteger('societie_id');
+            $table->unsignedBigInteger('tag_id');
             $table->timestamps();
+
+            //Foreigns
+            $table->foreign('societie_id')->references('id')->on('societies')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
         });
     }
 
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('service_has_tags');
     }
 };
